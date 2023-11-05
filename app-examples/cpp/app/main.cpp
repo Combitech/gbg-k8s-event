@@ -16,16 +16,33 @@ std::string listFilesInDir(const char* const dirName);
 int main(int argc, char** argv)
 {
   const std::string pwd = fs::current_path();
+  const std::string delayConfig = getEnvString("APP_ITERATION_DELAY");
+  int delay = 1; // default 1s
+  try
+  {
+    const int value = std::stoi(getEnvString("APP_ITERATION_DELAY"));
+    if (value > 0)
+      delay = value;    
+  } catch (...)
+  {
+    ; // No/invalid config treated equally; just use default
+  }
+  std::cout
+    << "\n======================================================================\n"
+    << "Running with iteration delay: " << delay << " second(s)"
+    << " on hostname: " << getEnvString("HOSTNAME")
+    << "\n======================================================================\n" 
+    << std::endl;
+
   while(true)
   {
     std::cout
       << getNowString() 
-      << ", HOSTNAME=" << getEnvString("HOSTNAME")
-      << ", MY_VAR=" << getEnvString("MY_VAR")
-      << ", Files in current directory (" << pwd << "):\n---\n  " <<  listFilesInDir(pwd.c_str()) << "\n---\n" 
+      << ", Files in current directory (" << pwd << "):\n---\n  " <<  listFilesInDir(pwd.c_str()) << "\n---\n"
+      << "Sleep " << delay << " second(s) until next iteration\n"
       << std::endl;
 
-    sleep(5);
+    sleep(delay);
   }
 	return 0;
 }
