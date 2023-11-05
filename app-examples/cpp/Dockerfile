@@ -1,6 +1,7 @@
 # Simple example - not a demonstration of "best practices" for production-ready container images!
 
 # Starting point (some proper base image)
+# See https://hub.docker.com/_/ubuntu for details
 FROM ubuntu:latest
 
 # Ensure that required tools are installed
@@ -15,4 +16,8 @@ WORKDIR /app
 # Build (according to instructions in the README)
 RUN mkdir build && cd build && cmake .. && make
 
+# Override application's default (5s here)  
+ENV APP_ITERATION_DELAY=5
+
+# What to run when the container starts (by default)
 ENTRYPOINT ["build/app"]

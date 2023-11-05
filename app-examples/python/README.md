@@ -16,6 +16,7 @@ docker image ls # list all images on host
 ```shell
 docker run --rm -e=SERVER_HOST=0.0.0.0 -e=SERVER_PORT=4000 -p 127.0.0.1:5000:5000 python-example:latest
 ```
+
 * The `--rm` flag ensures that the container is deleted once in stops
 * The `-e` options configure environment variables used by the application
 * The `-p` options "publishes" 4000 _inside_ the container to `127.0.0.1:5000` on the host.
