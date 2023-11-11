@@ -1,0 +1,62 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm-minikube
+{
+	"name": "Kubernetes - Minikube-in-Docker",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "latest",
+			"helm": "latest",
+			"minikube": "latest"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"version": "3.12"
+		},
+		"ghcr.io/devcontainers-contrib/features/git-lfs:1": {
+			"version": "latest"
+		},
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+			"jqVersion": "latest",
+			"yqVersion": "4",
+			"gojqVersion": "none",
+			"xqVersion": "none",
+			"jaqVersion": "none"
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// Add some aliases, fix prompt etc.
+	"postCreateCommand": "cat ${containerWorkspaceFolder}/.devcontainer/bashrc_append >> ${HOME:?}/.bashrc",
+
+	// Use 'postStartCommand' to run commands after the container is created like starting minikube.
+	// "postStartCommand": "nohup bash -c 'minikube start &' > minikube.log 2>&1",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"donjayamanne.githistory",
+				"ms-azuretools.vscode-docker",
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"jock.svg",
+				"ms-python.pylint"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
