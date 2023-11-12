@@ -26,8 +26,8 @@ code --install-extension ms-vscode-remote.remote-containers
 code --install-extension ms-azuretools.vscode-docker
 
 # Customize some settings to non-default values
-SETTINGS_DIR=${HOME}/.vscode
-[ -d "$SETTINGS_DIR" ] || mkdir $SETTINGS_DIR
+SETTINGS_DIR=${HOME}/.config/Code/User
+[ -d "$SETTINGS_DIR" ] || mkdir -p $SETTINGS_DIR
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp $SCRIPT_DIR/vscode-settings.json $SETTINGS_DIR/settings.json
