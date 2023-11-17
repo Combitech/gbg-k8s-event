@@ -25,6 +25,12 @@ Simple (dummy) applications, implemented in various languages, can be found unde
 
 Please refer to the dedicated [README](./app-examples/README.md) for further details.
 
+## Kubernetes examples
+
+Examples of manifests for Pods, Services, Secrets etc. can be found under `k8s-examples/`.
+
+Please refer to the dedicated [README](./k8s-examples/README.md) for further details.
+
 ## Main application
 
 The main application ("floskl") to containerize and eventually deploy in Kubernetes is cloned from a separate repository. A convenience script is provided to help out with this.
