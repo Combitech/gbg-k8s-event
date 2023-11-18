@@ -23,13 +23,9 @@ Once the devcontainer has started, you can use the terminal _within_ Visual Stud
 
 Simple (dummy) applications, implemented in various languages, can be found under [`app-examples/`](./app-examples). The purpose of these is to show how containerization (via Docker in this case) can be used to harmonized the build- and execution experience for different stacks.
 
-Please refer to the dedicated [README](./app-examples/README.md) for further details.
-
 ## Kubernetes examples
 
 Examples of manifests for Pods, Services, Secrets etc. can be found under [`k8s-examples/`](./k8s-examples).
-
-Please refer to the dedicated [README](./k8s-examples/README.md) for further details.
 
 ## Main application
 
