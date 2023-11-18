@@ -60,3 +60,49 @@ kubectl apply -f ./example-pod.yaml
 ```
 
 > For a complete application, pods are usually created implicitly via Deployment resources, not explicitly like in these examples.
+
+Read more about Pods in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/).
+
+## Create a ConfigMap
+
+ConfigMaps typically hold "configuration" of applications running inside Pods. Sometimes they hold content which is mounted as files within the Pod's (container's) file system. Other times they define properties which are mounted as environment variables within the container.
+
+The following examples show how to create ConfigMaps which are are used for mounting environment variables.
+
+The "one-liner" for just-in-time creation:
+
+```shell
+kubectl create configmap app-config --from-literal=BG_COLOR=darkgreen --from-literal=TEXT_COLOR=white
+```
+
+The same definition can be created via a separate _manifest_ file, like [app-configmap.yaml](./app-configmap.yaml)
+
+```shell
+kubectl apply -f ./app-configmap.yaml
+```
+
+Refer to the section on Deployments below for examples of how ConfigMaps are used to mount environment variables into Pods.
+
+Read more about ConfigMaps in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/configmap/).
+
+## Create a Secret
+
+Secrets are very similar to ConfigMaps as they can be used to specify configuration that ends up either as files in the Pod's filesystem or as environment variables in it. Within Kubernetes they are treated as a separate resource type with specific access control and separated storage. But for a _user_ of Kubernetes, the only visible difference is that the _values_ are stored in [Base64 encoded](https://en.wikipedia.org/wiki/Base64) format (not encrypted).
+
+The Secret resources are typically used to specify configuration of sensitive information like passwords, API-keys and TLS certificates  (with private keys).
+
+The easiest way of creating a secret is by using the CLI "one-liner":
+
+```shell
+kubectl create secret generic app-secret --from-literal=PASSWORD=s3cr3t
+```
+
+It is also possible to creating it via a _manifest_ file like [app-secret.yaml](./app-secret.yaml), but note that the values in this file must be Base64 encoded.
+
+```shell
+kubectl apply -f ./app-secret.yaml
+```
+
+Refer to the section on Deployments below for examples of how Secrets are used to mount environment variables into Pods.
+
+Read more about Secrets in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/secret/).
