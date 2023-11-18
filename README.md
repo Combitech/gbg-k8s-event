@@ -15,15 +15,17 @@ scripts/install-code.sh
 
 ## Running "devcontainers"
 
-This repository includes a predefined [devcontainer](https://containers.dev/) (in the `.devcontainer/` directory). When the repository root is opened in Visual Studio Code ("open folder", e.g. via `code .`), you can then choose to open the folder in that container. This will give you an environment where necessary tools, such as `docker`, `kubectl`, `python` and others are available.
+This repository includes a predefined "[devcontainer](https://containers.dev/)" (in the [`.devcontainer/`](./.devcontainer) directory). When the repository root is opened in Visual Studio Code ("open folder", e.g. via `code .`), you can then choose to open the folder in that container. This will give you an environment where necessary tools, such as `docker`, `kubectl`, `python` and others are available.
 
 Once the devcontainer has started, you can use the terminal _within_ Visual Studio Code to run commands.
 
 ## Application examples
 
-Simple (dummy) applications, implemented in various languages, can be found under `app-examples/`. The purpose of these is to show how containerization (via Docker in this case) can be used to harmonized the build- and execution experience for different stacks.
+Simple (dummy) applications, implemented in various languages, can be found under [`app-examples/`](./app-examples). The purpose of these is to show how containerization (via Docker in this case) can be used to harmonized the build- and execution experience for different stacks.
 
-Please refer to the dedicated [README](./app-examples/README.md) for further details.
+## Kubernetes examples
+
+Examples of manifests for Pods, Services, Secrets etc. can be found under [`k8s-examples/`](./k8s-examples).
 
 ## Main application
 
@@ -43,4 +45,4 @@ Run the following command from a terminal _within_ the devcontainer, i.e. the fi
 code repos/floskl
 ```
 
-Then follow the instructions in the README of the application repo for further guidance.
+Then follow the instructions in the [README](https://github.com/uivraeus/floskl#readme) of the application repo for further guidance.
