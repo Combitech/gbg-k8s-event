@@ -39,6 +39,28 @@ Examples of these two options are shown in the sections below.
 > kubectl delete -f my-manifest.yaml
 > ```
 
+> ***How to inspect?***
+>
+> You can use the `describe` sub-command of `kubectl` to retrieve status and information on a specific resource, e.g.:
+>
+> ```shell
+> kubectl describe pod my-pod
+> ```
+>
+> You can use the `get` sub-command of `kubectl` for querying which resources that are defined and to obtain the details of them. 
+>
+> List all Pods:
+>
+> ```shell
+> kubectl get pod
+> ```
+>
+> Get the manifest (in yaml format) of a specific pod:
+>
+> ```shell
+> kubectl get pod my-pod -o yaml
+> ```
+
 ## Create a Pod
 
 Pods encapsulate creation and execution of one or more containers (often a single container). You can think of it as configuration of all parameters you need to specify when running a container (similar to what you provide to `docker run`), for example:
@@ -58,6 +80,14 @@ It is usually easier to specify all details in a separate _manifest_ file, like 
 ```shell
 kubectl apply -f ./example-pod.yaml
 ```
+
+You can get the logs from a specific Pod by using the `logs` sub-command:
+
+```shell
+kubectl logs example
+```
+
+(add the `-f` option to trigger continuous "follow mode" for the logs)
 
 > For a complete application, pods are usually created implicitly via Deployment resources, not explicitly like in these examples.
 
@@ -166,4 +196,5 @@ The following example shows how to make the Service created above reachable at [
 ```shell
 kubectl port-forward svc/app-service 8080:80
 ```
+
 (Hit `Ctrl+C` to terminate the port-forward)
