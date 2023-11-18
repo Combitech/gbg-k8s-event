@@ -21,7 +21,7 @@ The focus is on explaining the basic principles and skips of lot of details. Ple
 Resources and be created in multiple ways. Two common options are:
 
 * Explicit `create` sub-commands of `kubectl` CLI with various options depending on resource type
-* Using `kubectl` to create/apply a "manifest file" (usually `yaml` format) specifying the desired resource(s)
+* Using `kubectl` to create/apply a "manifest file" (usually `yaml` format), which specifies the desired resource(s)
 
 Examples of these two options are shown in the sections below.
 
@@ -122,3 +122,48 @@ kubectl apply -f ./app-deployment.yaml
 ```
 
 When a Deployment is created (or updated) Kubernetes automatically creates a _ReplicaSet_, which in turn creates the specified amount of Pods. This intermediary step enables support for "rolling back changes" (among other things). Read more about Deployments in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+
+## Create a Service
+
+You defined a Service resource to expose a network application (server) running in a pod (or several) to other network clients running in your cluster. This will make the application addressable via a service name as well as a common IP address which is essential when there are multiple Pods (replicas) running.
+
+> Although it is possible to create a service which can be addressed from _outside_ the cluster, that is typically not how external access is managed. See the section below for further information.
+
+The Service resource, which targets specific Pods by their labels, maps a specific TCP port of the service to a specific port in the Pod (container). It is thus required to know which port(s) the application within the Pod listens on when defining the Service.
+
+You can create a Service using the following "one-liner" to expose the pods of the Deployment created above (via its manifest file)
+
+```shell
+kubectl expose -f app-deployment.yaml --name app-service --port=80 --target-port=8080
+```
+
+In this example, the application within the Pod (on port 8080) will (also) be available via the Service `app-service` on port 80. 
+
+As always, it is possible (and usually preferred) to crete the resource via a dedicated _manifest_ file, like [app-service.yaml](./app-service.yaml).
+
+```shell
+kubectl apply -f ./app-service.yaml
+```
+
+Read more about Services in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/).
+
+## Accessing your application from outside the cluster
+
+### Real-world scenario
+
+Typically, your application (actually the Service in front of it) is exposed to the outside via an Ingress resource. The examples in this repository don't covered this but the concept involves mapping of an externally addressable domain/host name (e.g. `jokes.example.com`) to your service.
+
+The Ingress definition can also be used to configure TLS (HTTPS) for your application.
+
+Please refer to the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) for details around Ingress definitions.
+
+### During debug or development
+
+You can use the CLI to do a "port-forward" to any running Pod or Service in the cluster. By default, the application then becomes reachable via a port on your "localhost" (127.0.0.1).
+
+The following example shows how to make the Service created above reachable at [http://127.0.0.1:8080](http://127.0.0.1:8080) on your machine.
+
+```shell
+kubectl port-forward svc/app-service 8080:80
+```
+(Hit `Ctrl+C` to terminate the port-forward)
