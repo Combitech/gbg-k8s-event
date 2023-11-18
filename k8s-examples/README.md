@@ -2,7 +2,7 @@
 
 Various examples of how to create Kubernetes resources.
 
-The focus is on explaining the basic principles and skips of lot of details. Please for consult the official [Kubernetes Documentation](https://kubernetes.io/docs/home/) for a more thorough walkthrough of all concepts.
+The focus is on explaining the basic principles and skips of lot of details. Please consult the official [Kubernetes Documentation](https://kubernetes.io/docs/home/) for a more thorough walkthrough of all concepts.
 
 > ⚠️ These examples are ***not*** demonstrations of "best practices" for production-ready deployments!
 
@@ -13,6 +13,8 @@ The focus is on explaining the basic principles and skips of lot of details. Ple
 * [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) (and [ReplicaSets](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)) that declares which pods to run (and how)
 * [Service](https://kubernetes.io/docs/concepts/services-networking/service/) resources to expose network applications running in pods to other workloads within the cluster
 * Sometimes also [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources for exposing services outside the cluster
+
+![Kubernetes resources diagram](./k8s-resources.svg)
 
 ## Managing resources
 
