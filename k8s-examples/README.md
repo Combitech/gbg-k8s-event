@@ -61,6 +61,18 @@ Examples of these two options are shown in the sections below.
 > kubectl get pod my-pod -o yaml
 > ```
 
+## Initial check
+
+Before creating/updating resources in the cluster, you can confirm that your tools are properly configured and that you are connected to the right/desired cluster.
+
+```shell
+kubectl cluster-info
+```
+
+```shell
+kubectl get nodes
+```
+
 ## Create a Pod
 
 Pods encapsulate creation and execution of one or more containers (often a single container). You can think of it as configuration of all parameters you need to specify when running a container (similar to what you provide to `docker run`), for example:
