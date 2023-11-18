@@ -14,7 +14,7 @@ The focus is on explaining the basic principles and skips of lot of details. Ple
 * [Service](https://kubernetes.io/docs/concepts/services-networking/service/) resources to expose network applications running in pods to other workloads within the cluster
 * Sometimes also [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources for exposing services outside the cluster
 
-![Kubernetes resources diagram](./k8s-resources.svg)
+![Kubernetes resources diagram](./media/k8s-resources.svg)
 
 ## Managing resources
 
