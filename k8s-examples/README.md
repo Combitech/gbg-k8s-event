@@ -41,16 +41,22 @@ Examples of these two options are shown in the sections below.
 
 ## Create a Pod
 
+Pods encapsulate creation and execution of one or more containers (often a single container). You can think of it as configuration of all parameters you need to specify when running a container (similar to what you provide to `docker run`), for example:
+
+* Which container image to run
+* Assignment of environment variables
+* _and much more..._
+
 The "one-liner" for just-in-time creation:
 
 ```shell
-
+kubectl run example --image=ghcr.io/uivraeus/cpp-example:latest --env="APP_ITERATION_DELAY=11"
 ```
 
-Usually easier to specify details in a separate manifest file, like [date-logger-pod.yaml](./date-logger-pod.yaml):
+It is usually easier to specify all details in a separate _manifest_ file, like [example-pod.yaml](./example-pod.yaml):
 
 ```shell
-kubectl apply -f ./date-logger-pod.yaml
+kubectl apply -f ./example-pod.yaml
 ```
 
 > For a complete application, pods are usually created implicitly via Deployment resources, not explicitly like in these examples.
