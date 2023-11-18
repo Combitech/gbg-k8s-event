@@ -106,3 +106,19 @@ kubectl apply -f ./app-secret.yaml
 Refer to the section on Deployments below for examples of how Secrets are used to mount environment variables into Pods.
 
 Read more about Secrets in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/secret/).
+
+## Create a Deployment (incl a ReplicaSet)
+
+By defining Deployments, you tell Kubernetes what kind of Pod you want and how many _replicas_ of it that shall exists. The difference between creating the pods manually, like shown above, and doing it via Deployments, is that Kubernetes will (try to) ensure that the specified number of pods always exists.
+
+So, if you delete a pod created indirectly via a Deployment, Kubernetes will automatically create a new replacement for it.
+
+> To actually delete the Pods, you must delete the corresponding Deployment resource.
+
+Although it is possible to create Deployments directly via the CLI it is easier to get all details right by doing it via a separate _manifest_ file, like [app-deployment.yaml](./app-deployment.yaml). This example also shows how to mount environment variables from ConfigMaps and Secrets.
+
+```shell
+kubectl apply -f ./app-deployment.yaml
+```
+
+When a Deployment is created (or updated) Kubernetes automatically creates a _ReplicaSet_, which in turn creates the specified amount of Pods. This intermediary step enables support for "rolling back changes" (among other things). Read more about Deployments in the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
