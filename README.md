@@ -15,7 +15,7 @@ scripts/install-code.sh
 
 ## Running "devcontainers"
 
-This repository includes a predefined "[devcontainer](https://containers.dev/)" (in the [`.devcontainer/`](./devcontainer) directory). When the repository root is opened in Visual Studio Code ("open folder", e.g. via `code .`), you can then choose to open the folder in that container. This will give you an environment where necessary tools, such as `docker`, `kubectl`, `python` and others are available.
+This repository includes a predefined "[devcontainer](https://containers.dev/)" (in the [`.devcontainer/`](./.devcontainer) directory). When the repository root is opened in Visual Studio Code ("open folder", e.g. via `code .`), you can then choose to open the folder in that container. This will give you an environment where necessary tools, such as `docker`, `kubectl`, `python` and others are available.
 
 Once the devcontainer has started, you can use the terminal _within_ Visual Studio Code to run commands.
 
