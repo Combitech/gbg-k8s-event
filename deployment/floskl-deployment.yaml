@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: floskl
+  labels:
+    app: floskl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: floskl
+  template:
+    metadata:
+      labels:
+        app: floskl
+
+    spec: 
+        initContainers:
+        - name: db-init
+          image: ghcr.io/uivraeus/floskl:latest
+          command: ['flask', '--app', 'floskl', 'init-db']
+          envFrom:
+          - configMapRef:
+              name: floskl-config
+          - secretRef:
+              name: floskl-secrets
+          
+        containers:
+        - name: floskl
+          image: ghcr.io/uivraeus/floskl:latest
+          envFrom:
+          - configMapRef:
+              name: floskl-config
+          - secretRef:
+              name: floskl-secrets
+
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
