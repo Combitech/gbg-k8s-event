@@ -12,6 +12,9 @@ alias jless='jq -C | less -ri'
 source <(kubectl completion bash)
 complete -F __start_kubectl k
 
+# simpler than vim?
+export KUBE_EDITOR=nano
+
 # non-default prompt
 # - https://thucnc.medium.com/how-to-show-current-git-branch-with-colors-in-bash-prompt-380d05a24745
 parse_git_branch() {
