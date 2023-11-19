@@ -141,6 +141,8 @@ kubectl create secret generic app-secret --from-literal=PASSWORD=s3cr3t
 
 It is also possible to creating it via a _manifest_ file like [app-secret.yaml](./app-secret.yaml), but note that the values in this file must be Base64 encoded.
 
+> ⚠️ Never commit files with actual secrets in plaintext (or base64 encoded) to Git! 
+
 ```shell
 kubectl apply -f ./app-secret.yaml
 ```

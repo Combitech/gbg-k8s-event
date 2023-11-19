@@ -20,24 +20,14 @@ spec:
         - name: joker
           image: ghcr.io/uivraeus/python-example:latest
 
+          envFrom:
+          - secretRef:
+              name: app-secret  # <- not really used in the app but included as an example
+          - configMapRef:
+              name: app-config
           env:
-          - name: PASSWORD  # <- not really used in the app but included as an example
-            valueFrom:
-              secretKeyRef:
-                name: app-secret
-                key: PASSWORD
-          - name: BG_COLOR
-            valueFrom:
-              configMapKeyRef:
-                name: app-config
-                key: BG_COLOR
-          - name: TEXT_COLOR
-            valueFrom:
-              configMapKeyRef:
-                name: app-config
-                key: TEXT_COLOR
           - name: SERVER_HOST
-            value: "0.0.0.0"  # <- always use this (no need to assign via ConfigMap)
+            value: "0.0.0.0"    # <- also possible to specify directly (not via Secret/ConfigMap)
 
           resources:
             limits:
