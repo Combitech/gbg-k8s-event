@@ -15,7 +15,7 @@ spec:
         app: joker  # <- Matches the selector rule above
 
     # The part below follows the schema for Pod definitions
-    spec: 
+    spec:
         containers:
         - name: joker
           image: ghcr.io/uivraeus/python-example:latest
@@ -32,4 +32,4 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "125m"

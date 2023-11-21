@@ -66,10 +66,6 @@ Examples of these two options are shown in the sections below.
 Before creating/updating resources in the cluster, you can confirm that your tools are properly configured and that you are connected to the right/desired cluster.
 
 ```shell
-kubectl cluster-info
-```
-
-```shell
 kubectl get nodes
 ```
 
