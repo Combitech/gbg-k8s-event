@@ -35,8 +35,8 @@ make
 
 (Abort with CTRL-C)
 
-> ***Run with assigned `MY_VAR` environment variable***
+> ***Run with assigned `APP_ITERATION_DELAY` environment variable***
 >
 > ```shell
-> MY_VAR=1234 ./app
+> APP_ITERATION_DELAY=5 ./app
 > ```

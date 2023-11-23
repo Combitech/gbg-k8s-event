@@ -14,7 +14,7 @@ docker image ls # list all images on host
 ## Run the container
 
 ```shell
-docker run --rm -e=SERVER_HOST=0.0.0.0 -e=SERVER_PORT=4000 -p 127.0.0.1:5000:5000 python-example:latest
+docker run --rm -e=SERVER_HOST=0.0.0.0 -e=SERVER_PORT=4000 -p 127.0.0.1:5000:4000 python-example:latest
 ```
 
 * The `--rm` flag ensures that the container is deleted once in stops

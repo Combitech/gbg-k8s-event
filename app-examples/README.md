@@ -6,7 +6,14 @@ Various examples, for different programming languages and technology stacks, can
 
 ## Try things out
 
-In the examples below, the `cpp` application is used but the `docker` commands and generic and applies to all kinds of containerized application.
+Take a look at the application source code and related instructions for how to build and run.
+
+* [cpp-example](./cpp/app/)
+* [cpp-example using Docker](./cpp/)
+* [python-example](./python/app/)
+* [python-example using Docker](./python/)
+
+The sections below cover general ways of building, running and interacting with Docker images and containers.
 
 ## Build the container image
 
@@ -59,9 +66,34 @@ docker stop example-container # more graceful than kill
 ## Clean up afterwards
 
 ```shell
-docker image rm ${EXAMPLE_IMAGE_NAME:?}:latest
+docker image rm example-image:latest
 ```
 
+## Publish you images
+
+Make the images available outside your local system by "pushing" them to an "OCI registry".
+
+> There are many public registries, e.g. Docker Hub or GitHub Container registry. Individual companies and organizations can also host their own private registries.
+>
+> Here we make use of the [harbor.floskl.life](https://harbor.floskl.life) registry.
+
+### Step 1, `tag` your image with the remote name
+
+```shell
+docker tag example-image:latest harbor.floskl.life/swc/example-image:latest
+```
+
+The `/swc/` part is called a "namespace", which can be used to separate images for different applications, organizations individuals etc.
+
+What's your namespace?
+
+### Step2, `push` it
+
+```shell
+docker push harbor.floskl.life/swc/example-image:latest 
+```
+
+This step assumes that you have "logged in" and have write permissions to the registry and namespace.
 
 ## Read the docs
 

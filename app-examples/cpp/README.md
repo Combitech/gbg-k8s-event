@@ -27,7 +27,7 @@ docker run --rm --init cpp-example:latest
 To override the default configuration the corresponding environment variable is overridden:
 
 ```shell
-docker run --rm -e=APP_ITERATION_DELAY=10 cpp-example:latest
+docker run --rm -e=APP_ITERATION_DELAY=10 --init cpp-example:latest
 ```
 
 Refer to the [README in the parent directory](../README.md) for more options when running containers in general.
