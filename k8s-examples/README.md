@@ -47,7 +47,7 @@ Examples of these two options are shown in the sections below.
 > kubectl describe pod my-pod
 > ```
 >
-> You can use the `get` sub-command of `kubectl` for querying which resources that are defined and to obtain the details of them. 
+> You can use the `get` sub-command of `kubectl` for querying which resources that are defined and to obtain the details of them.
 >
 > List all Pods:
 >
@@ -137,7 +137,7 @@ kubectl create secret generic app-secret --from-literal=PASSWORD=s3cr3t
 
 It is also possible to creating it via a _manifest_ file like [app-secret.yaml](./app-secret.yaml), but note that the values in this file must be Base64 encoded.
 
-> ⚠️ Never commit files with actual secrets in plaintext (or base64 encoded) to Git! 
+> ⚠️ Never commit files with actual secrets in plaintext (or base64 encoded) to Git!
 
 ```shell
 kubectl apply -f ./app-secret.yaml
@@ -177,7 +177,7 @@ You can create a Service using the following "one-liner" to expose the pods of t
 kubectl expose -f app-deployment.yaml --name app-service --port=80 --target-port=8080
 ```
 
-In this example, the application within the Pod (on port 8080) will (also) be available via the Service `app-service` on port 80. 
+In this example, the application within the Pod (on port 8080) will (also) be available via the Service `app-service` on port 80.
 
 As always, it is possible (and usually preferred) to crete the resource via a dedicated _manifest_ file, like [app-service.yaml](./app-service.yaml).
 
@@ -189,13 +189,17 @@ Read more about Services in the [official Kubernetes documentation](https://kube
 
 ## Accessing your application from outside the cluster
 
-### Real-world scenario
+### Create an Ingress
 
-Typically, your application (actually the Service in front of it) is exposed to the outside via an Ingress resource. The examples in this repository don't covered this but the concept involves mapping of an externally addressable domain/host name (e.g. `jokes.example.com`) to your service.
+You have defined a service which exposes your pod to other resources within the cluster but what if you want to expose your service to the outside world? You would then use an Ingress resource which maps an externally addressable domain/host name (e.g. `jokes.example.com`) to your service.
 
-The Ingress definition can also be used to configure TLS (HTTPS) for your application.
+The simplest way of deploying an ingress is from a _manifest_ file, like the one available in [app-ingress.yaml](./app-ingress.yaml), using the following command:
+ ```shell
+ kubectl apply -f ./app-ingress.yaml
+ ```
+ The _manifest_ specifies the address of the host, the service to which we want to route the traffic, the corresponding port number, as well as the available paths. The ingress also gives you the option of using TLS by providing it with a TLS-secret. The TLS-secret needs to be stored as a kubernetes secret within the same namespace as the ingress and it is the name of said secret that you provide within the _manifest_.
 
-Please refer to the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) for details around Ingress definitions.
+ Please refer to the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) for details around Ingress definitions.
 
 ### During debug or development
 
