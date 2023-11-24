@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: example
-    image: ghcr.io/uivraeus/cpp-example:latest
+    image: ghcr.io/uivraeus/cpp-example:1.0.0
     env:
     - name: APP_ITERATION_DELAY
       value: "7"

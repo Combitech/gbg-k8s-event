@@ -7,7 +7,7 @@ The [Dockerfile](./Dockerfile) shows the basic principles of encapsulating speci
 ## Build the container image
 
 ```shell
-docker build -t cpp-example:latest .
+docker build -t cpp-example:1.0.0 .
 docker image ls # list all images on host
 ```
 
@@ -16,7 +16,7 @@ docker image ls # list all images on host
 ### Running with defaults
 
 ```shell
-docker run --rm --init cpp-example:latest
+docker run --rm --init cpp-example:1.0.0
 ```
 
 * The `--rm` flag ensures that the container is deleted once in stops
@@ -27,7 +27,7 @@ docker run --rm --init cpp-example:latest
 To override the default configuration the corresponding environment variable is overridden:
 
 ```shell
-docker run --rm -e=APP_ITERATION_DELAY=10 --init cpp-example:latest
+docker run --rm -e=APP_ITERATION_DELAY=10 --init cpp-example:1.0.0
 ```
 
 Refer to the [README in the parent directory](../README.md) for more options when running containers in general.

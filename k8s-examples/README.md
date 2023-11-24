@@ -80,7 +80,7 @@ Pods encapsulate creation and execution of one or more containers (often a singl
 The "one-liner" for just-in-time creation:
 
 ```shell
-kubectl run example --image=ghcr.io/uivraeus/cpp-example:latest --env="APP_ITERATION_DELAY=11"
+kubectl run example --image=ghcr.io/uivraeus/cpp-example:1.0.0 --env="APP_ITERATION_DELAY=11"
 ```
 
 It is usually easier to specify all details in a separate _manifest_ file, like [example-pod.yaml](./example-pod.yaml):

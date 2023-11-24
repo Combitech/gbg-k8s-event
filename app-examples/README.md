@@ -20,7 +20,7 @@ The sections below cover general ways of building, running and interacting with 
 Typically you first `cd` into the application's directory (where the `Dockerfile` exists) before you build the container image. But that is not required as you can specify any path as the "build context root" argument (trailing "`.`" below, i.e. current directory)
 
 ```shell
-docker build -t example-image:latest .
+docker build -t example-image:1.0.0 .
 docker image ls # list all images on host
 ```
 
@@ -29,7 +29,7 @@ docker image ls # list all images on host
 ### Simplest form
 
 ```shell
-docker run --name example-container example-image:latest
+docker run --name example-container example-image:1.0.0
 ```
 
 A deterministic name is assigned via the `--name` options. This makes it easier to refer to it in other commands, e.g. when deleting it. 
@@ -44,7 +44,7 @@ A deterministic name is assigned via the `--name` options. This makes it easier 
 ### Better alternative for interaction 
 
 ```shell
-docker run --init --rm -it example-image:latest
+docker run --init --rm -it example-image:1.0.0
 ```
 
 * Abort via `Ctrl-C` thanks to `--init` option which makes `SIGINT` work better
@@ -57,7 +57,7 @@ docker run --init --rm -it example-image:latest
 Add the `-d` flag to run in "detached" mode. The output from the application must then be read via the `docker logs` command.
 
 ```shell
-docker run --name example-container --rm --init -d example-image:latest
+docker run --name example-container --rm --init -d example-image:1.0.0
 docker ps # list running containers on host
 docker logs example-container # add -f option to "follow"
 docker stop example-container # more graceful than kill
@@ -66,7 +66,7 @@ docker stop example-container # more graceful than kill
 ## Clean up afterwards
 
 ```shell
-docker image rm example-image:latest
+docker image rm example-image:1.0.0
 ```
 
 ## Publish you images
@@ -80,7 +80,7 @@ Make the images available outside your local system by "pushing" them to an "OCI
 ### Step 1, `tag` your image with the remote name
 
 ```shell
-docker tag example-image:latest harbor.floskl.life/swc/example-image:latest
+docker tag example-image:1.0.0 harbor.floskl.life/swc/example-image:1.0.0
 ```
 
 The `/swc/` part is called a "namespace", which can be used to separate images for different applications, organizations individuals etc.
@@ -90,7 +90,7 @@ What's your namespace?
 ### Step2, `push` it
 
 ```shell
-docker push harbor.floskl.life/swc/example-image:latest 
+docker push harbor.floskl.life/swc/example-image:1.0.0 
 ```
 
 This step assumes that you have "logged in" and have write permissions to the registry and namespace.
