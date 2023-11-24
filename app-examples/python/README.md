@@ -25,7 +25,6 @@ docker run --rm -e=SERVER_HOST=0.0.0.0 -e=SERVER_PORT=4000 -p 127.0.0.1:5000:400
 >
 > The log output printed when the application starts includes a URL as it applies _within_ the container.
 >
-> But to reach the server from the outside, the _published_ host/port address must be used (`127.0.0.1:5000` in this example) 
+> But to reach the server from the outside, the _published_ host/port address must be used (`127.0.0.1:5000` in this example)
 
 Refer to the [README in the parent directory](../README.md) for more options when running containers in general.
- 
