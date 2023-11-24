@@ -5,6 +5,5 @@ metadata:
 data:
   FLOSKL_POSTGRES_HOST: "postgresql.common.svc.cluster.local"
   FLOSKL_POSTGRES_PORT: "5432"
-  FLOSKL_POSTGRES_DB: "floskl01"
-  FLOSKL_POSTGRES_USER: "user01"
-  
+  FLOSKL_POSTGRES_DB: "common"
+  FLOSKL_POSTGRES_USER: "common"

@@ -14,20 +14,20 @@ spec:
       labels:
         app: floskl
 
-    spec: 
+    spec:
         initContainers:
         - name: db-init
-          image: ghcr.io/uivraeus/floskl:latest
+          image: harbor.floskl.life/common/floskl:1.0.0
           command: ['flask', '--app', 'floskl', 'init-db']
           envFrom:
           - configMapRef:
               name: floskl-config
           - secretRef:
               name: floskl-secrets
-          
+
         containers:
         - name: floskl
-          image: ghcr.io/uivraeus/floskl:latest
+          image: harbor.floskl.life/common/floskl:1.0.0
           envFrom:
           - configMapRef:
               name: floskl-config
@@ -37,4 +37,4 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "30m"

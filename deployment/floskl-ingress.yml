@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: floskl
+spec:
+  rules:
+  - host: wisdom.floskl.life
+    http:
+      paths:
+      - backend:
+          service:
+            name: floskl
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - wisdom.floskl.life
+    secretName: tls-secret
