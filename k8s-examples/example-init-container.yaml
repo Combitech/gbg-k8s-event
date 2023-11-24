@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example
+spec:
+  initContainers:
+  - name: check-python-init
+    image: harbor.floskl.life/common/python-example:1.0.0
+    command: ['python', '--version']
+
+  containers:
+  - name: joker
+    image: harbor.floskl.life/common/python-example:1.0.0
+
+    envFrom:
+    - configMapRef:
+        name: app-config
+
+    resources:
+            limits:
+              memory: "128Mi"
+              cpu: "10m"
