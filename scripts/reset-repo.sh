@@ -10,6 +10,7 @@ git clean -xdf
 git co main
 git pull
 
-# Invoke floskl-specific reset
+# Invoke floskl-specific reset and pre-build of images
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 ${SCRIPT_DIR}/reset-floskl-repo.sh
+${SCRIPT_DIR}/preload-docker-cache.sh
