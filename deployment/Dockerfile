@@ -1,6 +1,6 @@
 # Run "docker build" with a build context of the current directory
 #   Example:
-#     docker build -t floskl:latest .
+#     docker build -t floskl:1.0.0 .
 #
 # Note that the .dockerignore file ensures that the "COPY ./app" step
 # below doesn't include undesired files/directories from local dev/debug.
