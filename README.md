@@ -2,7 +2,7 @@
 
 Demo of containers and Kubernetes at the Göteborg office
 
-## Setup
+## Prerequisites
 
 If Docker and/or Visual Studio Code are not already installed on the system, these tools can be installed via scripts:
 
@@ -32,7 +32,7 @@ Examples of manifests for Pods, Services, Secrets etc. can be found under [`k8s-
 The main application ("floskl") to containerize and eventually deploy in Kubernetes is cloned from a separate repository. A convenience script is provided to help out with this.
 
 ```shell
-scripts/init-fresh-repo.sh
+scripts/init-fresh-floskl-repo.sh
 ```
 
 > ⚠️ If you have a prior version of this repo cloned, that version will be deleted.
