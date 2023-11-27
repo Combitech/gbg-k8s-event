@@ -13,7 +13,7 @@ pushd ${REPO_DIR}
 printf "\n▶️  Reset and clean the ${REPO_DIR} repository...\n"
 git reset --hard
 git clean -xdf
-git co main
+git checkout main
 git pull
 
 printf "\n▶️  Remove old database instance (if any)...\n"
@@ -21,4 +21,3 @@ printf "\n▶️  Remove old database instance (if any)...\n"
 
 printf "\n▶️  Prepare Python virtual environment...\n"
 ./prep-venv.sh
-

@@ -7,7 +7,7 @@ set -eu # 👉 https://explainshell.com/explain?cmd=set+-eux
 printf "\n▶️  Reset and clean the current repository...\n"
 git reset --hard
 git clean -xdf
-git co main
+git checkout main
 git pull
 
 # Invoke floskl-specific reset and pre-build of images
