@@ -5,11 +5,11 @@ metadata:
 spec:
   containers:
   - name: example
-    image: harbor.floskl.life/common/cpp-example:1.0.0
+    image: ghcr.io/uivraeus/cpp-example:1.0.0
     env:
     - name: APP_ITERATION_DELAY
       value: "7"
     resources:
       limits:
         memory: "128Mi"
-        cpu: "20m"
+        cpu: "60m"

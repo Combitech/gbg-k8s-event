@@ -18,7 +18,7 @@ spec:
     spec:
         containers:
         - name: joker
-          image: harbor.floskl.life/common/python-example:1.0.0
+          image: ghcr.io/uivraeus/python-example:1.0.0
 
           envFrom:
           - secretRef:
@@ -32,4 +32,4 @@ spec:
           resources:
             limits:
               memory: "128Mi"
-              cpu: "30m"
+              cpu: "125m"
